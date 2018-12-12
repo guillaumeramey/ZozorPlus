@@ -13,8 +13,8 @@ class Calculation {
     var operators: [Operator] = [.plus]
     var alertMessage = ""
     private var isExpressionCorrect: Bool {
-        if let stringNumber = numbers.last {
-            if stringNumber.isEmpty {
+        if let number = numbers.last {
+            if number.isEmpty {
                 return false
             }
         }
@@ -23,9 +23,9 @@ class Calculation {
 
     // MARK: - Methods
     func addNumber(_ newNumber: Int) {
-        if var stringNumber = numbers.last {
-            stringNumber += String(newNumber)
-            numbers[numbers.count-1] = stringNumber
+        if var lastNumber = numbers.last {
+            lastNumber += String(newNumber)
+            numbers[numbers.count-1] = lastNumber
         }
         displayString += String(newNumber)
     }
