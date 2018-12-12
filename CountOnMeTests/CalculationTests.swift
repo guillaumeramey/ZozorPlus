@@ -26,12 +26,17 @@ class CalculationTests: XCTestCase {
         XCTAssertFalse(success)
     }
 
-    func testGivenNumberIs40_WhenDeleteIsTapped_ThenDeleteSucceedAndNumberIs4() {
-        calculation.addNumber(40)
-
+    func testGivenNoOperationIsEntered_WhenDeleteIsTapped_ThenErrorIsProduced() {
         let success = calculation.delete()
 
-        XCTAssertTrue(success)
+        XCTAssertFalse(success)
+    }
+
+    func testGivenNumberIs40_WhenDeleteIsTapped_ThenNumberIs4() {
+        calculation.addNumber(40)
+
+        _ = calculation.delete()
+
         XCTAssertEqual(calculation.numbers[calculation.numbers.count-1], "4")
     }
 
@@ -39,17 +44,10 @@ class CalculationTests: XCTestCase {
         calculation.addNumber(1)
         _ = calculation.addOperator(.plus)
 
-        let success = calculation.delete()
+        _ = calculation.delete()
 
-        XCTAssertTrue(success)
         XCTAssertEqual(calculation.numbers[calculation.numbers.count-1], "1")
         XCTAssertEqual(calculation.operators.count, 1)
-    }
-
-    func testGivenNoOperationIsEntered_WhenDeleteIsTapped_ThenErrorIsProduced() {
-        let success = calculation.delete()
-
-        XCTAssertFalse(success)
     }
 
     func testGivenOperationIsOnePlusOne_WhenClearIsTapped_ThenOperatorsAndNumbersAreReset() {
@@ -57,7 +55,7 @@ class CalculationTests: XCTestCase {
         _ = calculation.addOperator(.plus)
         calculation.addNumber(1)
 
-        calculation.clearDisplayString()
+        calculation.clear()
 
         XCTAssertEqual(calculation.operators.count, 1)
         XCTAssertEqual(calculation.numbers.count, 1)

@@ -56,7 +56,7 @@ class Calculation {
                 }
             }
             total = currentStringTotal
-            clearDisplayString()
+            clear()
             return true
         } else {
             if numbers.count == 1 {
@@ -88,7 +88,7 @@ class Calculation {
         }
     }
 
-    func clearDisplayString() {
+    func clear() {
         numbers = [String()]
         operators = [.plus]
         displayString = ""
