@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A40F6BBB219A1DE5002C2E2A /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F6BBA219A1DE5002C2E2A /* Operation.swift */; };
+		A40F6BBB219A1DE5002C2E2A /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F6BBA219A1DE5002C2E2A /* Calculation.swift */; };
 		C926DADD1D7581BB00477020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926DADC1D7581BB00477020 /* AppDelegate.swift */; };
 		C926DADF1D7581BB00477020 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926DADE1D7581BB00477020 /* ViewController.swift */; };
 		C926DAE21D7581BB00477020 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C926DAE01D7581BB00477020 /* Main.storyboard */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A40F6BBA219A1DE5002C2E2A /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		A40F6BBA219A1DE5002C2E2A /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		C926DAD91D7581BB00477020 /* CountOnMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountOnMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C926DADC1D7581BB00477020 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C926DADE1D7581BB00477020 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		A40F6BB9219A1D5D002C2E2A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A40F6BBA219A1DE5002C2E2A /* Operation.swift */,
+				A40F6BBA219A1DE5002C2E2A /* Calculation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 			files = (
 				C926DADF1D7581BB00477020 /* ViewController.swift in Sources */,
 				C926DADD1D7581BB00477020 /* AppDelegate.swift in Sources */,
-				A40F6BBB219A1DE5002C2E2A /* Operation.swift in Sources */,
+				A40F6BBB219A1DE5002C2E2A /* Calculation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

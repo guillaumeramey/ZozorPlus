@@ -1,19 +1,19 @@
 import Foundation
 import UIKit
 
-class Operation {
+class Calculation {
     // MARK: - Properties
-    enum Operators: String {
+    enum Operator: String {
         case plus = "+"
         case minus = "-"
     }
     var displayString = ""
     var total = 0
-    var stringNumbers = [String()]
-    var operators: [Operators] = [.plus]
+    var numbers = [String()]
+    var operators: [Operator] = [.plus]
     var alertMessage = ""
     private var isExpressionCorrect: Bool {
-        if let stringNumber = stringNumbers.last {
+        if let stringNumber = numbers.last {
             if stringNumber.isEmpty {
                 return false
             }
@@ -22,18 +22,18 @@ class Operation {
     }
 
     // MARK: - Methods
-    func addNewNumber(_ newNumber: Int) {
-        if var stringNumber = stringNumbers.last {
+    func addNumber(_ newNumber: Int) {
+        if var stringNumber = numbers.last {
             stringNumber += String(newNumber)
-            stringNumbers[stringNumbers.count-1] = stringNumber
+            numbers[numbers.count-1] = stringNumber
         }
         displayString += String(newNumber)
     }
 
-    func addOperator(_ newOperator: Operators) -> Bool {
+    func addOperator(_ newOperator: Operator) -> Bool {
         if isExpressionCorrect {
             operators.append(newOperator)
-            stringNumbers.append("")
+            numbers.append("")
             displayString += newOperator.rawValue
             return true
         } else {
@@ -42,16 +42,16 @@ class Operation {
         }
     }
 
-    func calculateTotal() -> Bool {
+    func evaluate() -> Bool {
         if isExpressionCorrect {
             var currentStringTotal = 0
-            for (index, stringNumber) in stringNumbers.enumerated() {
-                if let number = Int(stringNumber) {
+            for (index, number) in numbers.enumerated() {
+                if let currentNumber = Int(number) {
                     switch operators[index] {
                     case .plus:
-                        currentStringTotal += number
+                        currentStringTotal += currentNumber
                     case .minus:
-                        currentStringTotal -= number
+                        currentStringTotal -= currentNumber
                     }
                 }
             }
@@ -59,7 +59,7 @@ class Operation {
             clearDisplayString()
             return true
         } else {
-            if stringNumbers.count == 1 {
+            if numbers.count == 1 {
                 alertMessage = "Démarrez un nouveau calcul !"
             } else {
                 alertMessage = "Entrez une expression correcte !"
@@ -72,13 +72,13 @@ class Operation {
         if displayString.count > 0 {
             displayString.removeLast(1)
             // number or operator ?
-            if var stringNumber = stringNumbers.last {
-                if stringNumber.isEmpty {
+            if var lastNumber = numbers.last {
+                if lastNumber.isEmpty {
                     operators.removeLast(1)
-                    stringNumbers.removeLast(1)
+                    numbers.removeLast(1)
                 } else {
-                    stringNumber.removeLast(1)
-                    stringNumbers[stringNumbers.count-1] = stringNumber
+                    lastNumber.removeLast(1)
+                    numbers[numbers.count-1] = lastNumber
                 }
             }
             return true
@@ -89,7 +89,7 @@ class Operation {
     }
 
     func clearDisplayString() {
-        stringNumbers = [String()]
+        numbers = [String()]
         operators = [.plus]
         displayString = ""
     }
