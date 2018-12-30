@@ -7,10 +7,10 @@ class Calculation {
         case plus = "+"
         case minus = "-"
     }
-    var displayString = ""
-    var total = 0
-    var numbers = [String()]
-    var operators: [Operator] = [.plus]
+    var displayString = "" // What the user see
+    var total = 0 // Operation result
+    private var numbers = [String()]
+    private var operators: [Operator] = [.plus]
     var alertMessage = ""
     private var isExpressionCorrect: Bool {
         if let number = numbers.last {
@@ -42,6 +42,7 @@ class Calculation {
         }
     }
 
+    // Evaluate the operation and return the result if correct
     func evaluate() -> Bool {
         if isExpressionCorrect {
             var currentStringTotal = 0
@@ -68,6 +69,7 @@ class Calculation {
         }
     }
 
+    // Delete the last character (operator or number)
     func delete() -> Bool {
         if displayString.count > 0 {
             displayString.removeLast(1)
@@ -88,6 +90,7 @@ class Calculation {
         }
     }
 
+    // Clear the screen and any current operation
     func clear() {
         numbers = [String()]
         operators = [.plus]

@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     // MARK: - Properties
-    var calculation: Calculation!
+    private var calculation: Calculation!
 
     // MARK: - Outlets
     @IBOutlet weak var calculatorDisplay: UITextView!
@@ -21,14 +21,20 @@ class ViewController: UIViewController {
         calculation = Calculation()
     }
 
-    func alert() {
+    // updates the display if the input is ok
+    private func updateDisplay(if success: Bool = true) {
+        if success {
+            calculatorDisplay.text = calculation.displayString
+        } else {
+            alert()
+        }
+    }
+
+    // Presents an alert with a customized pessage
+    private func alert() {
         let alertVC = UIAlertController(title: "Erreur", message: calculation.alertMessage, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
-    }
-
-    func updateDisplay() {
-        calculatorDisplay.text = calculation.displayString
     }
 
     // MARK: - Actions
@@ -39,20 +45,12 @@ class ViewController: UIViewController {
 
     @IBAction func plus() {
         let success = calculation.addOperator(.plus)
-        if success {
-            updateDisplay()
-        } else {
-            alert()
-        }
+        updateDisplay(if: success)
     }
 
     @IBAction func minus() {
         let success = calculation.addOperator(.minus)
-        if success {
-            updateDisplay()
-        } else {
-            alert()
-        }
+        updateDisplay(if: success)
     }
 
     @IBAction func equal() {
@@ -66,11 +64,7 @@ class ViewController: UIViewController {
 
     @IBAction func delete() {
         let success = calculation.delete()
-        if success {
-            updateDisplay()
-        } else {
-            alert()
-        }
+        updateDisplay(if: success)
     }
 
     @IBAction func clear() {
