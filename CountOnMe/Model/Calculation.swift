@@ -9,8 +9,8 @@ class Calculation {
     }
     var displayString = "" // What the user see
     var total = 0 // Operation result
-    private var numbers = [String()]
-    private var operators: [Operator] = [.plus]
+    var numbers = [String()]
+    var operators: [Operator] = [.plus]
     var alertMessage = ""
     private var isExpressionCorrect: Bool {
         if let number = numbers.last {
